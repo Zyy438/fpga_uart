@@ -22,7 +22,8 @@ UART (universal asynchronous receiver transmitter) needs two wires: an input pin
 
 The UART system of this project is mainly composed of two modules: receiver and transmitter. The receiver will store the data in an 8-bit register after receiving the signal. When all the signals are received and reach the midpoint of the stop bit time, the receiver will output all the data in the register and send out a 1-bit signal to remind the data reception is complete. When the stop bit ends, this reminder signal 'uart_en' will be reset to zero. After detecting the rising edge of the reminder signal, the sender will receive the data from the 8 bit input and output them on the sending pin in order. 
 
-This structure is only to detect whether the signal is transmitted correctly. The data sent has not been processed in any way. The data sent in the serial port manager should be consistent with the received data.
+This structure is only to detect whether the signal is transmitted correctly. The data sent has not been processed in any way. The data sent in the serial port manager should be consistent with the received data. The struct of the overall entity is shown below:
+![.png] (/doc/overall_rtl.png)
 
 ### Receive signal
 
