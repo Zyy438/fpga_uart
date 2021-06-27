@@ -1,5 +1,5 @@
 
-[.jpg](/doc/FPGA_UART.jpg)
+![.jpg](/doc/FPGA_UART.jpg)
 
 # FPGA_UART
 
