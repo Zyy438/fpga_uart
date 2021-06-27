@@ -19,6 +19,8 @@ This is a project implemented on the ALTERA EP4CE10F17C8 chip. It will be used i
 ## Introduction to uart
 
 UART (universal asynchronous receiver transmitter) needs two wires: an input pin to receive signal and an output pin to send signal. A frame of UART signal usually includes: start bit, data bit, parity bit and a stop bit. (there is no parity bit in this project as the signal being transmitted will be simple). 
+<img width="580" alt="uart_frame" src="https://user-images.githubusercontent.com/73535458/123538752-e1374b00-d768-11eb-997f-5504c0380142.png">
+
 
 The UART system of this project is mainly composed of two modules: receiver and transmitter. The receiver will store the data in an 8-bit register after receiving the signal. When all the signals are received and reach the midpoint of the stop bit time, the receiver will output all the data in the register and send out a 1-bit signal to remind the data reception is complete. When the stop bit ends, this reminder signal 'uart_en' will be reset to zero. After detecting the rising edge of the reminder signal, the sender will receive the data from the 8 bit input and output them on the sending pin in order. 
 
@@ -40,6 +42,7 @@ In addition to the two signal inputs of the system clock and rst, the sender als
 ## USB to TTL as well as CH340
 
 RS232 requires a big port and the according cables are already not that popular nowadays. Fortunately, USB to TTL is a good solution to this. A CH340 chip can convert USB signal to TTL signal and thus a host laptop can communicate with the FPGA board directly through a usb cable. To achieve this, just connect the FPGA's signal output port (in this project called 'uart_s') with CH340 TXD port and connect the FPGA's signal receive port (in this project called 'uart_r') with CH340 RXD port. Then connect CH340 D+ with D+ port in usb port, so as CH340 D- port and D- port in usb port.
+<img width="712" alt="RH340" src="https://user-images.githubusercontent.com/73535458/123538781-f8763880-d768-11eb-93c2-52b7e71e8236.png">
 
 
 
