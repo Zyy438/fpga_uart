@@ -52,7 +52,8 @@ This project also creates a LED display to indicate that the signal has been suc
 
 the entity created by this project will have a 6-bit segment select signal (in this project called 'sel') to select which segment to turn on. This output signal has a finate state machine and will be iterated for every 0.01s (if the system clk signal is 50MHz) to select different segment. Then, according to different segment chosen, a 8-bit led control signal 'set_led' will control the character shown in the chosen segment. Therefore, the process goes like this: firstly, the first segment is turned on, and shows 'L', it then turns off after 0.01s and the second segment turns on and show 'O', then it turns off as well after 0.01s and the third one turns on... as long as this procedure is going fast, human beings can not distinguish the on and off of those segments and see a complete word 'LOAdEd'.
 
-
+## Beep signal
+There is also a beep module in the system. being enabled by the 'uart_en' signal(rising edge detection), it will start a counter inside and count for 1 second. During this time, the beep will be enabled and make a sound to indicate that a signal is transmitted. 'beep_en' is the only output signal of this module and it will be 1'b1 for 1 second after a rising edge of signal 'uart_en' is detected. it shall be connected to a pin which is connected to a buzzer. 
 
 ## Reference
 [1]Campbell, S., 2021. Basics of UART Communication. [online] Circuit Basics. Available at: <https://www.circuitbasics.com/basics-uart-communication/> [Accessed 27 June 2021].
